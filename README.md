@@ -1,9 +1,9 @@
 ESP32-S3 CrowPanel 7" Dual-Screen Shack Monitor
-W2LPC — Louis Corradi — Computer Geeks of America — LPC Systems LLC
-South Plainfield, NJ — FN20in09
+W2LPC — Lou Corradi — Computer Geeks of America
+
 
 OVERVIEW
-A dual-screen shack companion panel for the ThinkStation P330 built on the Elecrow CrowPanel 7" ESP32-S3 800x480 capacitive touch display. Screen 1 displays a live glassmorphism-style system monitor showing CPU, RAM, GPU, disk, network, and top processes pulled from a Python psutil daemon running on the host PC. Screen 2 displays live HamQSL band conditions showing SFI, A-Index, K-Index, X-Ray flux, and per-band day/night propagation status.
+A dual-screen shack companion panel for the PC built on the Elecrow CrowPanel 7" ESP32-S3 800x480 capacitive touch display. Screen 1 displays a live glassmorphism-style system monitor showing CPU, RAM, GPU, disk, network, and top processes pulled from a Python psutil daemon running on the host PC. Screen 2 displays live HamQSL band conditions showing SFI, A-Index, K-Index, X-Ray flux, and per-band day/night propagation status.
 Data flows from the ThinkStation over WiFi via a Flask JSON endpoint. The ESP32 polls the daemon every second and renders the UI using LVGL v8.3.x at a locked 33 FPS.
 A full self-diagnostic boot sequence runs on every power-up. Each subsystem is checked in order — hardware, network, data sources, and LVGL framebuffer. Any RED failure halts boot and holds the error on screen. YELLOW warnings pass through without halting. No silent failures.
 Build time from hardware arrival to fully operational validated system: 18 hours.
@@ -12,10 +12,10 @@ HARDWARE
 
 Elecrow CrowPanel 7.0" ESP32-S3-WROOM-1-N4R8 — SKU DIS08070H
 800x480 IPS capacitive touch — GT911 touch controller
-8MB OPI PSRAM confirmed
+4MB OPI PSRAM confirmed
 ThinkStation P330 — i7-8700, 64GB DDR4, GT730 4GB, Windows 11 Enterprise
-USB-C data cable — powers the display from the ThinkStation
-2.4GHz WiFi — same network as ThinkStation (5GHz NOT supported by ESP32-S3)
+USB-C data cable — powers the display from the PC
+2.4GHz WiFi — same network as PC (5GHz NOT supported by ESP32-S3)
 
 SOFTWARE — ESP32 SIDE
 All libraries installed via Arduino IDE Library Manager unless marked BUILT-IN.
@@ -32,7 +32,7 @@ Board Settings in Arduino IDE:
 Board: Elecrow CrowPanel 7.0 (NOT standard ESP32)
 Flash Size: 4MB
 PSRAM: OPI PSRAM
-Partition Scheme: Default 4MB with spiffs
+Partition Scheme: Default 8MB with spiffs
 
 LVGL Configuration — lv_conf.h:
 Copy lv_conf_template.h from lvgl library folder to Documents/Arduino/libraries/
@@ -53,7 +53,7 @@ Key settings:
 #define LV_USE_CHART 1
 #define LV_USE_TABLE 1
 
-SOFTWARE — THINKSTATION SIDE
+SOFTWARE — PC SIDE
 Python 3.11 recommended.
 Package       Install command
 psutil        pip install psutil
@@ -71,9 +71,9 @@ Run as Windows service using NSSM (Non-Sucking Service Manager — nssm.cc):
 nssm install ElecrowDaemon python C:\ELECROW\stats_server.py
 nssm start ElecrowDaemon
 
-IMPORTANT: Set a DHCP reservation in your router for the ThinkStation MAC address.
+IMPORTANT: Set a DHCP reservation in your router for the PC MAC address.
 The ESP32 needs a fixed IP to reach the daemon reliably.
-ThinkStation MAC: 00:D8:61:3D:46:23 — reserved at 192.168.0.11 on NETGEAR R7000.
+PC MAC: 00:00:00:00:00:00 — reserved at 192.168.0.11 on Router.
 
 GPU TEMPERATURE NOTE:
 GT730 does not support NVML. GPUtil returns 0C for GPU temperature on this card.
@@ -176,13 +176,11 @@ images/            Validation photos — boot sequence and running screens
 
 LICENSE
 MIT License
-Copyright 2026 Lou Corradi W2LPC — LPC Systems LLC
+Copyright 2026 Lou Corradi W2LPC 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the software.
 THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND.
 
-73 de W2LPC
-Lou Corradi
-LPC Systems LLC — Computer Geeks of America
-South Plainfield, NJ — FN20in09
+73 de W2LPC — Computer Geeks of America
+
 April 2026
 
