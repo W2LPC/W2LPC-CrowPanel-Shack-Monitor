@@ -1,0 +1,8 @@
+// Add this .c file to your project, then use:
+LV_IMG_DECLARE(information_station_boot_800x480);
+
+lv_obj_t * img = lv_img_create(lv_scr_act());
+lv_img_set_src(img, &information_station_boot_800x480);
+lv_obj_center(img);
+
+// If this is your splash, show it before building the main UI.
