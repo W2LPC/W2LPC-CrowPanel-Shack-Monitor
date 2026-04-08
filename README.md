@@ -1,3 +1,7 @@
+![W2LPC Information Station - System Monitor](images/Main.jpg)
+![W2LPC Information Station - Band Conditions](images/Band.jpg)
+![Boot sequence validation](images/validate 6.jpg)
+
 ESP32-S3 CrowPanel 7" Dual-Screen Shack Monitor
 W2LPC — Lou Corradi — Computer Geeks of America
 
