@@ -1,3 +1,27 @@
+# ESP32-S3 CrowPanel Shack Monitor
+
+This is a touchscreen display that shows:
+- PC stats (CPU, RAM, disk, network)
+- Ham radio band conditions
+
+Runs on an ESP32 with a small Python program on your PC.
+
+## Quick Start
+
+1. Flash firmware from `/firmware`
+2. Install Python packages:
+   pip install flask psutil requests
+
+3. Run:
+   python daemon.py
+
+4. Open in browser:
+   http://<your-pc-ip>:5000
+
+5. Power on the ESP32 — it connects automatically
+
+---
+
 ![W2LPC Information Station - System Monitor](images/Main.jpg)
 ![W2LPC Information Station - Band Conditions](images/Band.jpg)
 
