@@ -4,6 +4,8 @@ This is a touchscreen display that shows:
 - PC stats (CPU, RAM, disk, network)
 - Ham radio band conditions
 
+- "If this worked for you, drop a ⭐ or open a Discussion" 
+
 Runs on an ESP32 with a small Python program on your PC.
 
 ## Quick Start
@@ -195,6 +197,8 @@ http://www.hamqsl.com/solarxml.php
 NSSM — Non-Sucking Service Manager:
 
 https://nssm.cc/download
+
+"If this worked for you, drop a ⭐ or open a Discussion" 
 
 REPOSITORY CONTENTS
 firmware/          ESP32 Arduino sketch — main application
